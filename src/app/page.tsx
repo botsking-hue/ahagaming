@@ -63,27 +63,28 @@ export default function Home() {
 
       {/* Categories */}
       <section id="categories">
-        <div className="flex items-center justify-between mb-8">
-          <h2 className="text-3xl font-bold text-white">Browse Categories</h2>
-          <Link href="#" className="text-cyan-400 hover:text-cyan-300 transition">
-            View All →
-          </Link>
+  <div className="flex items-center justify-between mb-8">
+    <h2 className="text-3xl font-bold text-white">Browse Categories</h2>
+    <Link href="/games" className="text-cyan-400 hover:text-cyan-300 transition">
+      View All →
+    </Link>
+  </div>
+  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+    {categories.map((category) => (
+      <Link
+        key={category.name}
+        href={`/categories/${category.name.toLowerCase()}`}
+        className={`glass-card p-6 text-center group cursor-pointer hover:scale-105 transition-transform duration-300`}
+      >
+        <div className={`h-12 w-12 mx-auto mb-4 bg-gradient-to-br ${category.color} rounded-lg flex items-center justify-center`}>
+          <Gamepad2 className="h-6 w-6 text-white" />
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-          {categories.map((category) => (
-            <div
-              key={category.name}
-              className={`glass-card p-6 text-center group cursor-pointer hover:scale-105 transition-transform duration-300`}
-            >
-              <div className={`h-12 w-12 mx-auto mb-4 bg-gradient-to-br ${category.color} rounded-lg flex items-center justify-center`}>
-                <Gamepad2 className="h-6 w-6 text-white" />
-              </div>
-              <h3 className="font-semibold text-white mb-1">{category.name}</h3>
-              <p className="text-sm text-gray-400">{category.count} Games</p>
-            </div>
-          ))}
-        </div>
-      </section>
+        <h3 className="font-semibold text-white mb-1">{category.name}</h3>
+        <p className="text-sm text-gray-400">{category.count} Games</p>
+      </Link>
+    ))}
+  </div>
+</section>
 
       {/* Featured Games */}
       <section id="trending">
