@@ -1,0 +1,51 @@
+[
+  {
+    "id": "1",
+    "type": "new_game",
+    "title": "New Game Added! 🎮",
+    "message": "Grand Theft Auto V Mobile is now available for download",
+    "icon": "🎮",
+    "gameSlug": "gta-v",
+    "timestamp": "2024-01-20T10:30:00Z",
+    "read": false
+  },
+  {
+    "id": "2",
+    "type": "update",
+    "title": "Game Updated 📱",
+    "message": "Call of Duty Mobile v2.0 is now available with new features",
+    "icon": "⚡",
+    "gameSlug": "call-of-duty",
+    "timestamp": "2024-01-19T14:15:00Z",
+    "read": false
+  },
+  {
+    "id": "3",
+    "type": "announcement",
+    "title": "New Category Added 🏆",
+    "message": "Check out our new Strategy games category",
+    "icon": "🎯",
+    "category": "strategy",
+    "timestamp": "2024-01-18T09:00:00Z",
+    "read": true
+  },
+  {
+    "id": "4",
+    "type": "whatsapp",
+    "title": "Join WhatsApp Channel 📲",
+    "message": "Get instant updates on new games via WhatsApp",
+    "icon": "💬",
+    "link": "https://whatsapp.com/channel/example",
+    "timestamp": "2024-01-17T16:45:00Z",
+    "read": true
+  },
+  {
+    "id": "5",
+    "type": "maintenance",
+    "title": "Site Maintenance 🔧",
+    "message": "Scheduled maintenance on Jan 25th, 2-4 AM UTC",
+    "icon": "⚙️",
+    "timestamp": "2024-01-16T11:20:00Z",
+    "read": true
+  }
+]
