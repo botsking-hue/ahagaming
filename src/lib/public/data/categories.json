@@ -1,0 +1,74 @@
+[
+  {
+    "id": "arcade",
+    "name": "Arcade",
+    "slug": "arcade",
+    "icon": "🎮",
+    "description": "Fast-paced action games",
+    "gameCount": 45,
+    "color": "from-cyan-500 to-blue-600"
+  },
+  {
+    "id": "racing",
+    "name": "Racing",
+    "slug": "racing",
+    "icon": "🏎️",
+    "description": "Car and vehicle racing games",
+    "gameCount": 32,
+    "color": "from-purple-500 to-pink-600"
+  },
+  {
+    "id": "soccer",
+    "name": "Soccer",
+    "slug": "soccer",
+    "icon": "⚽",
+    "description": "Football and soccer games",
+    "gameCount": 28,
+    "color": "from-green-500 to-emerald-600"
+  },
+  {
+    "id": "action",
+    "name": "Action",
+    "slug": "action",
+    "icon": "🔫",
+    "description": "Combat and adventure games",
+    "gameCount": 67,
+    "color": "from-red-500 to-orange-600"
+  },
+  {
+    "id": "adventure",
+    "name": "Adventure",
+    "slug": "adventure",
+    "icon": "🗺️",
+    "description": "Story-driven exploration games",
+    "gameCount": 39,
+    "color": "from-yellow-500 to-amber-600"
+  },
+  {
+    "id": "puzzle",
+    "name": "Puzzle",
+    "slug": "puzzle",
+    "icon": "🧩",
+    "description": "Brain teasers and puzzle games",
+    "gameCount": 24,
+    "color": "from-indigo-500 to-purple-600"
+  },
+  {
+    "id": "sports",
+    "name": "Sports",
+    "slug": "sports",
+    "icon": "🏀",
+    "description": "All sports games",
+    "gameCount": 38,
+    "color": "from-orange-500 to-red-600"
+  },
+  {
+    "id": "strategy",
+    "name": "Strategy",
+    "slug": "strategy",
+    "icon": "♟️",
+    "description": "Tactical and strategy games",
+    "gameCount": 29,
+    "color": "from-teal-500 to-cyan-600"
+  }
+]
