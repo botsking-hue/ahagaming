@@ -4,6 +4,9 @@ import { Gamepad2, Search, Menu, X } from 'lucide-react'
 import { useState } from 'react'
 import Link from 'next/link'
 import SearchBar from '@/components/shared/SearchBar'
+import NotificationBell from '@/components/notifications/NotificationBell'
+import ThemeToggle from '@/components/shared/ThemeToggle'
+import WhatsAppButton from '@/components/shared/WhatsAppButton'
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -44,11 +47,16 @@ const Header = () => {
           </nav>
 
           {/* Search & Actions */}
-        <div className="hidden md:flex items-center space-x-4">
-  <SearchBar />
-  <Link href="/games" className="btn-primary">
-    Browse Games
-  </Link>
+                  <div className="hidden md:flex items-center space-x-4">
+            <SearchBar />
+            <Link href="/games" className="btn-primary">
+              Browse Games
+            </Link>
+          </div>
+          <div className="hidden md:flex items-center space-x-2">
+  <ThemeToggle />
+  <NotificationBell />
+  <WhatsAppButton variant="inline" />
 </div>
           {/* Mobile Menu Button */}
           <button
@@ -80,6 +88,16 @@ const Header = () => {
                   className="w-full px-4 py-2 bg-white/5 border border-white/10 rounded-lg"
                 />
               </div>
+              <div className="md:hidden mt-4 pt-4 border-t border-white/10">
+  <div className="flex flex-col space-y-4">
+    {/* ... existing links ... */}
+    <div className="pt-4 flex items-center space-x-4">
+      <ThemeToggle />
+      <NotificationBell />
+      <WhatsAppButton variant="inline" />
+    </div>
+  </div>
+</div>
             </div>
           </div>
         )}
