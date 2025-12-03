@@ -74,4 +74,57 @@
     "downloads": "2B+",
     "updatedAt": "2024-01-08"
   }
+  // Add 10 more sample games for testing admin features
+{
+  "id": "6",
+  "slug": "pubg-mobile",
+  "title": "PUBG Mobile",
+  "category": "action",
+  "platform": ["android", "ios"],
+  "cover": "/images/games/pubg-mobile.jpg",
+  "description": "Battle royale on mobile",
+  "downloadLink": "https://mediafire.com/pubg",
+  "size": "2.1 GB",
+  "version": "2.8.0",
+  "rating": 4.7,
+  "downloads": "1.2B",
+  "updatedAt": "2024-01-20",
+  "featured": true,
+  "status": "published"
+},
+{
+  "id": "7",
+  "slug": "genshin-impact",
+  "title": "Genshin Impact",
+  "category": "adventure",
+  "platform": ["android", "ios", "pc"],
+  "cover": "/images/games/genshin-impact.jpg",
+  "description": "Open-world action RPG",
+  "downloadLink": "https://mediafire.com/genshin",
+  "size": "15 GB",
+  "version": "4.3",
+  "rating": 4.8,
+  "downloads": "500M",
+  "updatedAt": "2024-01-19",
+  "featured": false,
+  "status": "published"
+},
+{
+  "id": "8",
+  "slug": "free-fire",
+  "title": "Free Fire",
+  "category": "action",
+  "platform": ["android", "ios"],
+  "cover": "/images/games/free-fire.jpg",
+  "description": "Survival shooter game",
+  "downloadLink": "https://mediafire.com/freefire",
+  "size": "800 MB",
+  "version": "1.102.1",
+  "rating": 4.5,
+  "downloads": "2B",
+  "updatedAt": "2024-01-18",
+  "featured": true,
+  "status": "published"
+}
+// ... add 7 more games
 ]
