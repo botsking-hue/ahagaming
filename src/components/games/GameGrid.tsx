@@ -1,67 +1,126 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import GameCard from './GameCard'
+import LoadingSpinner from '@/components/ui/LoadingSpinner'
+import { useOptimizedGames } from '@/hooks/useOptimizedGames'
 
-interface Game {
-  id: string
-  slug: string
-  title: string
-  category: string
-  platform: string[]
-  cover: string
-  description: string
-  downloadLink: string
-  size: string
-  version: string
-  rating: number
-  downloads: string
-  updatedAt: string
+interface GameGridProps {
+  category?: string
+  platform?: string
+  sort?: string
+  search?: string
+  limit?: number
+  showFilters?: boolean
 }
 
-const GameGrid = () => {
-  const [games, setGames] = useState<Game[]>([])
-  const [loading, setLoading] = useState(true)
+const GameGrid = ({ 
+  category, 
+  platform, 
+  sort = 'newest', 
+  search, 
+  limit,
+  showFilters = true
+}: GameGridProps) => {
+  const { filteredGames, loading, error } = useOptimizedGames({
+    category,
+    platform,
+    sort,
+    search,
+    limit
+  })
 
+  const [visibleGames, setVisibleGames] = useState(limit || 12)
+
+  // Infinite scroll handler
   useEffect(() => {
-    const fetchGames = async () => {
-      try {
-        const response = await fetch('/data/games.json')
-        const data = await response.json()
-        setGames(data)
-      } catch (error) {
-        console.error('Error loading games:', error)
-      } finally {
-        setLoading(false)
+    if (limit) return // Don't infinite scroll if limit is set
+
+    const handleScroll = () => {
+      if (
+        window.innerHeight + window.scrollY >= document.body.offsetHeight - 500 &&
+        visibleGames < filteredGames.length
+      ) {
+        setVisibleGames(prev => Math.min(prev + 12, filteredGames.length))
       }
     }
 
-    fetchGames()
-  }, [])
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [visibleGames, filteredGames.length, limit])
 
   if (loading) {
     return (
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {[...Array(6)].map((_, i) => (
-          <div key={i} className="glass-card animate-pulse">
-            <div className="h-48 bg-gray-800 rounded-t-2xl" />
-            <div className="p-6 space-y-4">
-              <div className="h-6 bg-gray-800 rounded" />
-              <div className="h-4 bg-gray-800 rounded" />
-              <div className="h-4 bg-gray-800 rounded w-2/3" />
-            </div>
-          </div>
-        ))}
+      <div className="py-12 text-center">
+        <LoadingSpinner size="lg" color="gradient" className="mx-auto" />
+        <p className="mt-4 text-gray-400">Loading games...</p>
       </div>
     )
   }
 
+  if (error) {
+    return (
+      <div className="py-12 text-center glass-card rounded-2xl">
+        <div className="text-4xl mb-4">⚠️</div>
+        <h3 className="text-xl font-semibold text-white mb-2">Error Loading Games</h3>
+        <p className="text-gray-400 mb-4">{error}</p>
+        <button
+          onClick={() => window.location.reload()}
+          className="btn-primary"
+        >
+          Retry
+        </button>
+      </div>
+    )
+  }
+
+  if (filteredGames.length === 0) {
+    return (
+      <div className="py-12 text-center glass-card rounded-2xl">
+        <div className="text-4xl mb-4">🎮</div>
+        <h3 className="text-xl font-semibold text-white mb-2">No Games Found</h3>
+        <p className="text-gray-400">
+          Try adjusting your filters or search terms
+        </p>
+      </div>
+    )
+  }
+
+  const gamesToShow = limit ? filteredGames.slice(0, limit) : filteredGames.slice(0, visibleGames)
+
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {games.map((game) => (
-        <GameCard key={game.id} game={game} />
-      ))}
-    </div>
+    <>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {gamesToShow.map((game, index) => (
+          <div 
+            key={game.id}
+            className="stagger-item animate-fade-in"
+            style={{ animationDelay: `${index * 0.1}s` }}
+          >
+            <GameCard game={game} />
+          </div>
+        ))}
+      </div>
+
+      {/* Load More Button (for non-infinite scroll) */}
+      {!limit && visibleGames < filteredGames.length && (
+        <div className="text-center mt-8">
+          <button
+            onClick={() => setVisibleGames(prev => Math.min(prev + 12, filteredGames.length))}
+            className="btn-primary px-8"
+          >
+            Load More Games ({filteredGames.length - visibleGames} remaining)
+          </button>
+        </div>
+      )}
+
+      {/* End of Results */}
+      {!limit && visibleGames >= filteredGames.length && filteredGames.length > 0 && (
+        <div className="text-center mt-8 py-8 border-t border-white/10">
+          <p className="text-gray-400">🎉 You've seen all {filteredGames.length} games!</p>
+        </div>
+      )}
+    </>
   )
 }
 
