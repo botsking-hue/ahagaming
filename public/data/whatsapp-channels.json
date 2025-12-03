@@ -1,0 +1,56 @@
+[
+  {
+    "id": "1",
+    "name": "Game Updates",
+    "description": "Get notified when new games are added",
+    "members": "5.2K",
+    "link": "https://whatsapp.com/channel/gameupdates",
+    "icon": "🎮",
+    "category": "updates"
+  },
+  {
+    "id": "2",
+    "name": "Android Games",
+    "description": "Exclusive Android game releases",
+    "members": "8.7K",
+    "link": "https://whatsapp.com/channel/androidgames",
+    "icon": "📱",
+    "category": "platform"
+  },
+  {
+    "id": "3",
+    "name": "PC Gaming",
+    "description": "PC game releases and updates",
+    "members": "3.4K",
+    "link": "https://whatsapp.com/channel/pcgaming",
+    "icon": "💻",
+    "category": "platform"
+  },
+  {
+    "id": "4",
+    "name": "Arcade Games",
+    "description": "Latest arcade and casual games",
+    "members": "4.1K",
+    "link": "https://whatsapp.com/channel/arcadegames",
+    "icon": "🕹️",
+    "category": "category"
+  },
+  {
+    "id": "5",
+    "name": "Game Deals",
+    "description": "Free games and special offers",
+    "members": "6.9K",
+    "link": "https://whatsapp.com/channel/gamedeals",
+    "icon": "🎁",
+    "category": "deals"
+  },
+  {
+    "id": "6",
+    "name": "Support & Help",
+    "description": "Get help with game installations",
+    "members": "2.3K",
+    "link": "https://whatsapp.com/channel/support",
+    "icon": "🛠️",
+    "category": "support"
+  }
+]
