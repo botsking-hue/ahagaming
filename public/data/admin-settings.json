@@ -1,0 +1,15 @@
+{
+  "siteTitle": "GameHub",
+  "siteDescription": "Download Free Games for Android, iOS & PC",
+  "whatsappLink": "https://whatsapp.com/channel/gameupdates",
+  "contactEmail": "admin@gamehub.com",
+  "defaultCategory": "arcade",
+  "enableNotifications": true,
+  "maintenanceMode": false,
+  "analytics": {
+    "totalDownloads": "15.2M",
+    "totalGames": 156,
+    "totalUsers": "45.3K",
+    "lastUpdated": "2024-01-20"
+  }
+}
