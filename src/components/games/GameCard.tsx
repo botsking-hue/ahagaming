@@ -1,6 +1,9 @@
+'use client'
+
 import { Download, Star, Users, Smartphone, Monitor } from 'lucide-react'
 import Link from 'next/link'
-import Image from 'next/image'
+import { useLazyLoad } from '@/hooks/useLazyLoad'
+import { useState } from 'react'
 
 interface GameCardProps {
   game: {
@@ -18,6 +21,9 @@ interface GameCardProps {
 }
 
 const GameCard = ({ game }: GameCardProps) => {
+  const [ref, isVisible] = useLazyLoad<HTMLDivElement>()
+  const [imageLoaded, setImageLoaded] = useState(false)
+
   const getPlatformIcon = (platform: string) => {
     switch (platform) {
       case 'android':
@@ -32,11 +38,32 @@ const GameCard = ({ game }: GameCardProps) => {
   }
 
   return (
-    <Link href={`/games/${game.slug}`}>
-      <div className="glass-card game-card-hover overflow-hidden h-full">
-        {/* Game Cover */}
+    <Link href={`/games/${game.slug}`} prefetch={false}>
+      <div 
+        ref={ref}
+        className="glass-card game-card-hover overflow-hidden h-full"
+      >
+        {/* Game Cover with Lazy Load */}
         <div className="relative h-48 bg-gradient-to-br from-gray-800 to-gray-900">
-          <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+          {isVisible && (
+            <div className={`absolute inset-0 transition-opacity duration-500 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+              {/* In production, use next/image with placeholder */}
+              <div className="w-full h-full flex items-center justify-center">
+                <div className="text-center">
+                  <span className="text-3xl">🎮</span>
+                  <div className="mt-2 text-sm text-gray-400">Game Cover</div>
+                </div>
+              </div>
+            </div>
+          )}
+          
+          {/* Loading Skeleton */}
+          {!imageLoaded && (
+            <div className="absolute inset-0 animate-pulse bg-gradient-to-br from-gray-700 to-gray-800" />
+          )}
+          
+          {/* Category Badge */}
           <div className="absolute top-4 left-4">
             <span className="px-3 py-1 bg-gradient-to-r from-cyan-500 to-blue-600 text-xs font-semibold rounded-full">
               {game.category}
