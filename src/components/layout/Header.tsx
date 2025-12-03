@@ -3,6 +3,7 @@
 import { Gamepad2, Search, Menu, X } from 'lucide-react'
 import { useState } from 'react'
 import Link from 'next/link'
+import SearchBar from '@/components/shared/SearchBar'
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -43,21 +44,12 @@ const Header = () => {
           </nav>
 
           {/* Search & Actions */}
-          <div className="hidden md:flex items-center space-x-4">
-            <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
-              <input
-                type="text"
-                placeholder="Search games..."
-                className="pl-10 pr-4 py-2 bg-white/5 border border-white/10 rounded-lg 
-                         focus:outline-none focus:ring-2 focus:ring-cyan-500 w-64"
-              />
-            </div>
-            <button className="btn-primary">
-              Get App
-            </button>
-          </div>
-
+        <div className="hidden md:flex items-center space-x-4">
+  <SearchBar />
+  <Link href="/games" className="btn-primary">
+    Browse Games
+  </Link>
+</div>
           {/* Mobile Menu Button */}
           <button
             className="md:hidden text-gray-300"
